@@ -149,6 +149,10 @@ const changePlayer = (data) => {
     adjustDom('displayTurn', `${displayTurnText}'s turn`);
 }
 
-
+// reset game -- Stil WIP (FAILING)
+const resetGame = document.querySelector('#resetBtn'); 
+resetGame.addEventListener('click', (event) =>{
+    initializeVariables();
+})
 
 
