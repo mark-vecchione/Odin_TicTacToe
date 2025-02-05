@@ -1,6 +1,13 @@
 // Attach event listener to form
-
 const form = document.querySelector("#myForm");
+const newGameButton = document.querySelector('#newGameBtn')
+// new game button
+newGameButton.addEventListener('click', () =>{
+    location.reload();
+})
+//reset game button
+const resetGame = document.querySelector('#resetBtn');
+
 
 form.addEventListener('submit', (event) => {
     //prevent refresh
@@ -38,6 +45,12 @@ const initializeVariables = (data) => {
 
 const box = document.querySelector(".box");
 
+const resetDom = () => {
+    document.querySelectorAll(".box").forEach(box =>{
+        box.className = "box";
+        box.textContent = ""
+        })
+    }
 
 //Start the game 
 
@@ -55,9 +68,14 @@ const startGame = (data) => {
                 playMove(event.target,data);
             })
         })
+        resetGame.addEventListener('click', () =>{
+            initializeVariables(data);
+            resetDom();
+        })
     };
 
     gameBoardEventListener(data);
+
 
 };
 
@@ -149,10 +167,4 @@ const changePlayer = (data) => {
     adjustDom('displayTurn', `${displayTurnText}'s turn`);
 }
 
-// reset game -- Stil WIP (FAILING)
-const resetGame = document.querySelector('#resetBtn'); 
-resetGame.addEventListener('click', (event) =>{
-    initializeVariables();
-})
-
-
+// reset game button
